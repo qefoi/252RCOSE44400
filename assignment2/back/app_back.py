@@ -57,8 +57,8 @@ def update_message():
     - Call write_message() to save it
     - Return { "status": "ok" }
     """
-    message = request.get_json()
-    write_message(message) 
+    data = request.get_json()
+    write_message(data["message"]) 
     return {"status": "ok"}
 
 
