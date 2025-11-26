@@ -12,7 +12,9 @@ def index():
     resp = requests.get(BACKEND_URL+"/api/message")
     data = resp.json()
     message = data['message']
-    return render_template('index.html', current_message=message)
+    if 'updated' in message:
+        timestamp = message.split('updated at')[1].strip(')')
+    return render_template('index.html', current_message=message, update_time=timestamp)
 
 
 @app.route("/update", methods=["POST"])
@@ -28,7 +30,6 @@ def update():
     payload = {"message": new_message}
     requests.post(f"{BACKEND_URL}/api/message", json=payload)
     return redirect('/')
-
 
 # v2 TODO:
 # - Change page title (in HTML)
