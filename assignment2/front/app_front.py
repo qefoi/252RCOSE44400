@@ -12,6 +12,7 @@ def index():
     resp = requests.get(BACKEND_URL+"/api/message")
     data = resp.json()
     message = data['message']
+    timestamp = ""
     if 'updated' in message:
         timestamp = message.split('updated at')[1].strip(')')
     return render_template('index.html', current_message=message, update_time=timestamp)

@@ -28,7 +28,8 @@ def write_message(msg: str):
     - Open DATA_PATH
     - Write msg to the file
     """
-    msg = f"{msg} (updated at {datetime.now()})"
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    msg = f"{msg} (updated at {timestamp})"
     with open(DATA_PATH, "w+", encoding='utf-8') as f:
         f.write(msg)
 
@@ -60,7 +61,7 @@ def update_message():
 # v1 has no /api/health endpoint
 # (Students add this in v2)
 @app.route("/api/health", methods=["GET"])
-def get_message():
+def get_status():
     return {"status": "healthy"}
 # v2 TODO:
 # - Modify write_message() or update_message() to include a timestamp
