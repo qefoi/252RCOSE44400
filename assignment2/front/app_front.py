@@ -6,14 +6,14 @@ app = Flask(__name__)
 # URL of the backend container inside Docker network
 BACKEND_URL = "http://backend:5001"
 
-'''
+
 @app.route("/", methods=["GET"])
 def index():
     resp = requests.get(BACKEND_URL+"/api/message")
     data = resp.json()
     message = data['message']
     return render_template('index.html', current_message=message)
-'''
+
 
 @app.route("/update", methods=["POST"])
 def update():
