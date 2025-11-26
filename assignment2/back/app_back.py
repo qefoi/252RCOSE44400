@@ -28,13 +28,8 @@ def write_message(msg: str):
     - Open DATA_PATH
     - Write msg to the file
     """
-    if os.path.isfile(DATA_PATH):
-        with open(DATA_PATH, "w", encoding='utf-8') as f:
-            f.write(msg)
-    else:
-        os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
-        with open(DATA_PATH, "w", encoding='utf-8') as f:
-            f.write(msg)
+    with open(DATA_PATH, "r+", encoding='utf-8') as f:
+        f.write(msg)
 
 
 @app.route("/api/message", methods=["GET"])
