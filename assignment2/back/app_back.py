@@ -17,7 +17,7 @@ def read_message():
     if os.path.isfile(DATA_PATH):
         with open(DATA_PATH, "r", encoding="utf-8") as f:
             content = f.read()
-        return content
+            return content
     else:
         return ""
 
@@ -45,14 +45,13 @@ def get_message():
     - Return { "message": <stored message> } as JSON
     """
     message = read_message()
-    return {"message": "hello"}
+    return {"message": message}
 
 
 @app.route("/api/message", methods=["POST"])
 def update_message():
     """
     TODO:
-        
     - Extract the field "message"
     - Call write_message() to save it
     - Return { "status": "ok" }
