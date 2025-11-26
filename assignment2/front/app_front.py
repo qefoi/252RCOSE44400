@@ -25,7 +25,6 @@ def update():
     - Redirect back to "/"
     """
     new_message = request.form.get("new_message")
-    print(new_message)
     payload = {"message": new_message}
     requests.post(f"{BACKEND_URL}/api/message", json=payload)
     return redirect('/')
