@@ -36,7 +36,7 @@ def write_message(msg: str):
         with open(DATA_PATH, "w", encoding='utf-8') as f:
             f.write(msg)
 
-
+'''
 @app.route("/api/message", methods=["GET"])
 def get_message():
     """
@@ -46,7 +46,7 @@ def get_message():
     """
     message = read_message()
     return {"message": message}
-
+'''
 
 @app.route("/api/message", methods=["POST"])
 def update_message():
