@@ -28,7 +28,7 @@ def write_message(msg: str):
     - Open DATA_PATH
     - Write msg to the file
     """
-    with open(DATA_PATH, "r+", encoding='utf-8') as f:
+    with open(DATA_PATH, "w+", encoding='utf-8') as f:
         f.write(msg)
 
 
