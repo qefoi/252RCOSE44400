@@ -1,6 +1,14 @@
 # Use Python 3.13 base image for AWS Lambda
 FROM public.ecr.aws/lambda/python:3.13
 
+COPY requirements.txt ${LAMBDA_TASK_ROOT}
+
+RUN pip install --no-cache-dir -r requirements.txt -t ${LAMBDA_TASK_ROOT}
+
+COPY lambda_function.py ${LAMBDA_TASK_ROOT}
+
+CMD ["lambda_function.handler"]
+
 # Add the required commands here
 # NOTE:
 # (1) AWS Lambda container images use a fixed working directory called ${LAMBDA_TASK_ROOT}.
